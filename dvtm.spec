@@ -34,7 +34,7 @@ Group:		Applications/Terminal
 Common files of dvtm.
 
 %description common -l hu.UTF-8
-A dvtm általános fájljai
+A dvtm általános fájljai.
 
 %package iso
 Summary:	ISO version of dvtm

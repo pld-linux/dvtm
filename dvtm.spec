@@ -1,12 +1,12 @@
 Summary:	dvtm brings the concept of tiling window management to the console (UTF version)
 Summary(hu.UTF-8):	dvtm a tiling ablakkezelést valósítja meg konzolon
 Name:		dvtm
-Version:	0.5
+Version:	0.5.1
 Release:	0.1
 License:	MIT/X
 Group:		Applications/Terminal
 Source0:	http://www.brain-dump.org/projects/dvtm/%{name}-%{version}.tar.gz
-# Source0-md5:	076db11f53440c194cf24deceb469321
+# Source0-md5:	15af44198d6a636190480122b8de7155
 URL:		http://www.brain-dump.org/projects/dvtm/
 BuildRequires:	ncurses-devel
 BuildRequires:	sed >= 4.0
@@ -25,58 +25,22 @@ konzolon. Egy konzolos ablakkezelőként próbálja meg könnyűvé tenni a
 munkát több konzol alapú programmal egyidőben, mint pl. a vim, mutt,
 cmus vagy irssi.
 
-%package common
-Summary:	Common files of dvtm
-Summary(hu.UTF-8):	A dvtm általános fájljai
-Group:		Applications/Terminal
-
-%description common
-Common files of dvtm.
-
-%description common -l hu.UTF-8
-A dvtm általános fájljai.
-
-%package iso
-Summary:	ISO version of dvtm
-Summary(hu.UTF-8):	ISO verzió a dvtm-ből
-Group:		Applications/Terminal
-Requires:	%{name}-common = %{version}-%{release}
-
-%description iso
-ISO version of dvtm.
-
-%description iso -l hu.UTF-8
-ISO verzió a dvtm-ből.
-
 %prep
 %setup -q
 %{__sed} -i "s@^PREFIX.*@PREFIX = %{_prefix}@ ; \
 	s@\(^INCS =.*\)@\1 -I/usr/include/ncursesw@" config.mk
 
 %build
-# iso version
 %{__make}
-mv dvtm dvtm-iso
-
-# we want unicode
-%{__make} unicode
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-install dvtm-iso $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/dvtm
-
-%files common
-%doc README
-%attr(755,root,root) %{_bindir}/dvtm-status
+%attr(755,root,root) %{_bindir}/dvtm*
 %{_mandir}/man1/dvtm*
-
-%files iso
-%attr(755,root,root) %{_bindir}/dvtm-iso

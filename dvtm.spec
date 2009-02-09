@@ -9,6 +9,7 @@ Group:		Applications/Terminal
 Source0:	http://www.brain-dump.org/projects/dvtm/%{name}-%{version}.tar.gz
 # Source0-md5:	15af44198d6a636190480122b8de7155
 URL:		http://www.brain-dump.org/projects/dvtm/
+Patch0:		%{name}-%{version}-optflags.patch
 BuildRequires:	ncurses-devel
 BuildRequires:	sed >= 4.0
 Obsoletes:	dvtm-common
@@ -35,12 +36,13 @@ vim, mutt, cmus czy irssi.
 
 %prep
 %setup -q
+%patch0 -p1
 %{__sed} -i "s@^PREFIX.*@PREFIX = %{_prefix}@ ; \
 	s@\(^INCS =.*\)@\1 -I/usr/include/ncursesw@" config.mk
-%{__sed} -i "s@-Os@%{rpmcflags}@" config.mk
 
 %build
-%{__make}
+%{__make} \
+	OPT_FLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

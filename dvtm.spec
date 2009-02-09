@@ -4,12 +4,12 @@ Summary(pl.UTF-8):	dvtm - idea kaflowego zarzÄ…dcy okien przeniesiona na konsolÄ
 Name:		dvtm
 Version:	0.5.1
 Release:	0.1
-License:	MIT/X
+License:	MIT
 Group:		Applications/Terminal
 Source0:	http://www.brain-dump.org/projects/dvtm/%{name}-%{version}.tar.gz
 # Source0-md5:	15af44198d6a636190480122b8de7155
-URL:		http://www.brain-dump.org/projects/dvtm/
 Patch0:		%{name}-%{version}-optflags.patch
+URL:		http://www.brain-dump.org/projects/dvtm/
 BuildRequires:	ncurses-devel
 BuildRequires:	sed >= 4.0
 Obsoletes:	dvtm-common

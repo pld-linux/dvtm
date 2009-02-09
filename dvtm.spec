@@ -1,4 +1,3 @@
-# TODO: optflags
 Summary:	dvtm brings the concept of tiling window management to the console
 Summary(hu.UTF-8):	dvtm a tiling ablakkezelést valósítja meg konzolon
 Summary(pl.UTF-8):	dvtm - idea kaflowego zarządcy okien przeniesiona na konsolę
@@ -38,6 +37,7 @@ vim, mutt, cmus czy irssi.
 %setup -q
 %{__sed} -i "s@^PREFIX.*@PREFIX = %{_prefix}@ ; \
 	s@\(^INCS =.*\)@\1 -I/usr/include/ncursesw@" config.mk
+%{__sed} -i "s@-Os@%{rpmcflags}@" config.mk
 
 %build
 %{__make}

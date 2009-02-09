@@ -10,7 +10,6 @@ Source0:	http://www.brain-dump.org/projects/dvtm/%{name}-%{version}.tar.gz
 URL:		http://www.brain-dump.org/projects/dvtm/
 BuildRequires:	ncurses-devel
 BuildRequires:	sed >= 4.0
-Requires:	%{name}-common = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

@@ -3,7 +3,7 @@ Summary(hu.UTF-8):	dvtm a tiling ablakkezelést valósítja meg konzolon
 Summary(pl.UTF-8):	dvtm - idea kaflowego zarządcy okien przeniesiona na konsolę
 Name:		dvtm
 Version:	0.5.1
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		Applications/Terminal
 Source0:	http://www.brain-dump.org/projects/dvtm/%{name}-%{version}.tar.gz

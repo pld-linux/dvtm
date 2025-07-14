@@ -36,7 +36,7 @@ vim, mutt, cmus czy irssi.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 %{__sed} -i "s@^PREFIX.*@PREFIX = %{_prefix}@ ; \
 	s@\(^INCS =.*\)@\1 -I/usr/include/ncursesw@" config.mk
 
